@@ -1,6 +1,6 @@
 <template>
   <div class="feature">
-    <a href="javascript:;">
+    <a href="javascript:;" @click="search">
       <img src="~assets/img/home/recommend_bg.jpg" alt />
     </a>
   </div>
@@ -8,7 +8,17 @@
 
 <script>
 export default {
-  name: "Feature"
+  name: "Feature",
+  methods: {
+    search() {
+      this.$router.push({
+        path: "/list",
+        query: {
+          cid: 927
+        }
+      });
+    }
+  }
 };
 </script>
   

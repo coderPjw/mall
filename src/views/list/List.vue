@@ -45,12 +45,14 @@ export default {
         lists: []
       },
       isShow: false,
-      total: 0
+      total: 0,
+      query: ""
     };
   },
   created() {
     this.cid = this.$route.query.cid;
-    this.getLists(this.cid);
+    this.query = this.$route.query.query;
+    this.getLists(this.cid, this.query);
   },
   mounted() {
     // 解决betterscroll刷新问题
@@ -66,9 +68,9 @@ export default {
   },
   methods: {
     // 获得数据
-    getLists(cid) {
+    getLists(cid, query) {
       const page = this.list.page + 1;
-      getLists(cid, page)
+      getLists(cid, page, query)
         .then(res => {
           if (this.total < res.data.message.total)
             this.total = res.data.message.total;

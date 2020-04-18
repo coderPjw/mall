@@ -5,7 +5,7 @@
       <div>
         <ul class="floor-list">
           <li v-for="(good, key) in item.product_list" :key="key">
-            <img :src="good.image_src" alt />
+            <img :src="good.image_src" alt @click="toList(good.navigator_url.split('=')[1])" />
           </li>
         </ul>
       </div>
@@ -19,6 +19,16 @@ export default {
   props: {
     floors: {
       type: Array
+    }
+  },
+  methods: {
+    toList(query) {
+      this.$router.push({
+        path: "/list",
+        query: {
+          query
+        }
+      });
     }
   }
 };

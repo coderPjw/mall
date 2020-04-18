@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div v-for="(item, index) in navs" :key="index">
-      <a href="javascript:;">
+      <a href="javascript:;" @click="toCategory">
         <img v-lazy="item.image_src" width="80px" />
       </a>
     </div>
@@ -14,6 +14,11 @@ export default {
   props: {
     navs: {
       type: Array
+    }
+  },
+  methods: {
+    toCategory() {
+      this.$router.push("/category");
     }
   }
 };
